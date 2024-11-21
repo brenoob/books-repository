@@ -10,7 +10,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-end mr-8 gap-2 items-center">
+  <div class="container-search">
     <h2 class="text-2xl font-bold underline">pesquise livros</h2>
     <div class="search-bar">
       <input
@@ -24,13 +24,13 @@ onMounted(() => {
   </div>
   <div class="flex justify-center">
     <div v-if="bookStore.booksList.length" class="container-card">
-      <div
-        v-for="book in bookStore.booksList"
-        :key="book.id"
-        class="card"
-      >
+      <div v-for="book in bookStore.booksList" :key="book.id" class="card">
         <h3 class="text-xl font-bold truncate">{{ book.volumeInfo.title }}</h3>
-        <img :src="book.volumeInfo.imageLinks?.thumbnail" alt="Capa do livro" class="w-[200px] h-[300px] rounded-md mt-2 mb-8" />
+        <img
+          :src="book.volumeInfo.imageLinks?.thumbnail"
+          alt="Capa do livro"
+          class="min-w-[200px] h-[300px] rounded-md mt-2 mb-8"
+        />
         <p>Autor(es): {{ book.volumeInfo.authors?.join(', ') || 'Desconhecido' }}</p>
         <p>Publicado em: {{ book.volumeInfo.publishedDate || 'livro não encontrado' }}</p>
       </div>
