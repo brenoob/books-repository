@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { Icon } from '@iconify/vue'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const isMenuOpen = ref(true)
 
-const toggleMenu = ()=> {
+const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 </script>
@@ -26,7 +26,9 @@ const toggleMenu = ()=> {
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
-      <button @click="toggleMenu" class="toggle-menu-button"><Icon :icon="isMenuOpen ? 'mdi:menu' : 'mdi:close'"></Icon></button>
+      <button @click="toggleMenu" class="toggle-menu-button">
+        <Icon :icon="isMenuOpen ? 'mdi:menu' : 'mdi:close'"></Icon>
+      </button>
     </div>
   </header>
 

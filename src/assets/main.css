@@ -17,7 +17,7 @@
     header {
       @apply flex justify-between items-center p-4 bg-gray-800 text-white h-14;
     }
-    
+
     a {
       @apply h-full transition-all duration-300 hover:bg-[var(--color-text)] hover:text-[var(--color-background)] font-medium p-2;
     }
