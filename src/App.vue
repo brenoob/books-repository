@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { Icon } from '@iconify/vue'
+import { ref } from 'vue';
+
+const isMenuOpen = ref(true)
+
+const toggleMenu = ()=> {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
 <template>
-  <header class="flex justify-between items-center p-4 bg-gray-800 text-white">
+  <header class="header">
     <div class="wrapper">
       <img
         alt="logo"
@@ -12,10 +20,13 @@ import { RouterLink, RouterView } from 'vue-router'
         width="125"
         height="125"
       />
-      <nav class="flex gap-4">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+      <div v-if="isMenuOpen" class="">
+        <nav class="toggle-menu">
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+      </div>
+      <button @click="toggleMenu" class="toggle-menu-button"><Icon :icon="isMenuOpen ? 'mdi:menu' : 'mdi:close'"></Icon></button>
     </div>
   </header>
 

@@ -8,20 +8,27 @@
   body {
     @apply bg-[var(--color-background)] text-[var(--color-text)] min-h-screen text-base;
   }
+
   #app {
     @apply font-normal w-full;
   }
-  a,
-  .green {
-    text-decoration: none;
-    color: hsla(160, 100%, 37%, 1);
-    transition: 0.4s;
-    padding: 3px;
-  }
-  @media (hover: hover) {
-    a:hover {
-      background-color: hsla(160, 100%, 37%, 0.2);
+
+  @media (min-width: 768px) {
+    header {
+      @apply flex justify-between items-center p-4 bg-gray-800 text-white h-14;
     }
+    
+    a {
+      @apply h-full transition-all duration-300 hover:bg-[var(--color-text)] hover:text-[var(--color-background)] font-medium p-2;
+    }
+  }
+
+  header {
+    @apply bg-gray-800 text-white;
+  }
+
+  a {
+    @apply md:w-full w-screen h-full text-center py-3 transition-all duration-300 hover:bg-[var(--color-text)] hover:text-[var(--color-background)] font-medium p-2;
   }
 }
 
@@ -29,6 +36,7 @@
   .btn {
     @apply py-2 px-4 rounded;
   }
+
   .card {
     @apply bg-slate-800 rounded-lg p-4 shadow-md border border-slate-500 max-w-60 min-h-[500px] flex flex-col;
   }
@@ -44,7 +52,18 @@
   .search-bar {
     @apply text-slate-900;
   }
+
   .wrapper {
     @apply flex flex-col md:flex-row items-center justify-between w-full;
+  }
+}
+
+@layer utilities {
+  .toggle-menu {
+    @apply flex gap-4 md:flex-row flex-col bg-slate-800 text-white mt-4 md:mt-0 h-full w-full;
+  }
+
+  .toggle-menu-button {
+    @apply absolute top-2 right-2 md:hidden;
   }
 }
