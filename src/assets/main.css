@@ -34,7 +34,7 @@
 
 @layer components {
   .btn {
-    @apply py-2 px-4 rounded;
+    @apply py-2 px-4 rounded bg-[var(--color-text)] text-[var(--color-background)] my-2 hover:bg-[var(--color-background)] hover:text-[var(--color-text)] transition-all duration-300;
   }
 
   .card {

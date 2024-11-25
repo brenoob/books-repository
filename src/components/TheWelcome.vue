@@ -33,6 +33,9 @@ onMounted(() => {
         />
         <p>Autor(es): {{ book.volumeInfo.authors?.join(', ') || 'Desconhecido' }}</p>
         <p>Publicado em: {{ book.volumeInfo.publishedDate || 'livro não encontrado' }}</p>
+        <button class="btn" @click="$router.push({ name: 'details', params: { id: book.id } })">
+          Detalhes
+        </button>
       </div>
     </div>
 
