@@ -1,11 +1,14 @@
 <template>
-  <div v-if="book" class="flex items-center justify-center gap-4 m-4 border p-4 rounded-md">
+  <div
+    v-if="book"
+    class="flex flex-col justify-start gap-4 p-4 overflow-x-hidden border rounded-md lg:flex-row lg:gap-8 lg:p-4 lg:items-start"
+  >
     <img
       :src="book.volumeInfo.imageLinks?.thumbnail"
       :alt="`Capa do livro ${book.volumeInfo.title}`"
       class="rounded shadow-md h-72"
     />
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 overflow-x-hidden">
       <h1 class="text-2xl font-bold">{{ book.volumeInfo.title }}</h1>
       <p><strong>Autor(es):</strong> {{ book.volumeInfo.authors?.join(', ') || 'Desconhecido' }}</p>
       <p>

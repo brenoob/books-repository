@@ -24,7 +24,7 @@
   }
 
   header {
-    @apply bg-gray-800 text-white;
+    @apply bg-gray-800 text-white pb-4;
   }
 
   a {
