@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Home from '@/components/TheWelcome.vue'
 import { setActivePinia, createPinia } from 'pinia'
-import { useBookStore } from '@/stores/bookStore'
+import { useBookStore } from '@/stores/usebookStore'
 
 vi.mock('@/stores/bookStore', () => ({
   useBookStore: vi.fn(),

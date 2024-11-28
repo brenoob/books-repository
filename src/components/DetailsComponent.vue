@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { useBookStore } from '@/stores/bookStore'
+import { useBookStore } from '@/stores/usebookStore'
 import type { Item } from '@/types/bookType'
 
 const route = useRoute()

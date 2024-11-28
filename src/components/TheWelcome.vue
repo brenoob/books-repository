@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useBookStore } from '@/stores/bookStore'
+import { useBookStore } from '@/stores/usebookStore'
 
 const bookStore = useBookStore()
 
