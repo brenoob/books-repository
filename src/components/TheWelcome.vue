@@ -10,6 +10,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <h1 class="text-3xl font-bold pl-2 pt-2">Book Repository</h1>
   <div class="container-search">
     <h2 class="text-2xl font-bold text-center my-4 md:mr-2">pesquise livros</h2>
     <div class="search-bar">
