@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useBookStore } from '@/stores/usebookStore'
+import { Icon } from '@iconify/vue/dist/iconify.js'
 
 const bookStore = useBookStore()
 
@@ -24,7 +25,11 @@ onMounted(() => {
     </div>
   </div>
   <div class="flex justify-center">
-    <div v-if="bookStore.booksList.length" class="container-card">
+    <p v-if="bookStore.loading">Buscando livros...</p>
+
+    <p v-else-if="bookStore.error" class="text-red-400">Erro nenhum livro encontrado.</p>
+
+    <div v-else-if="bookStore.booksList.length" class="container-card">
       <div v-for="book in bookStore.booksList" :key="book.id" class="card">
         <h3 class="text-xl font-bold truncate">{{ book.volumeInfo.title }}</h3>
         <img
@@ -32,6 +37,16 @@ onMounted(() => {
           alt="Capa do livro"
           class="min-w-[200px] h-[300px] rounded-md mt-2 mb-8"
         />
+        <Icon
+          :class="
+            bookStore.favoriteBooks.some((f) => f.id === book.id) ? 'text-red-500' : 'text-gray-500'
+          "
+          class="cursor-pointer ml-auto mb-2"
+          @click="bookStore.toggleFavorite(book)"
+          icon="mdi:favorite"
+          width="24"
+          height="24"
+        ></Icon>
         <p class="truncate">
           Autor(es): {{ book.volumeInfo.authors?.join(', ') || 'Desconhecido' }}
         </p>
@@ -41,7 +56,5 @@ onMounted(() => {
         </button>
       </div>
     </div>
-
-    <p v-else>Nenhum livro encontrado.</p>
   </div>
 </template>

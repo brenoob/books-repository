@@ -6,18 +6,24 @@ export const useBookStore = defineStore('books', () => {
   const books = ref<Item[]>([])
   const search = ref('harry potter')
   const favorites = ref<Item[]>([])
+  const loading = ref(false)
+  const error = ref<string | null>(null)
 
   const booksList = computed(() => books.value)
   const favoriteBooks = computed(() => favorites.value)
 
   const fetchBooks = async () => {
+    loading.value = true
+    error.value = null
     try {
       const url = `https://www.googleapis.com/books/v1/volumes?q=${search.value}`
       const response = await fetch(url)
       const data: Root = await response.json()
       books.value = data.items || []
-    } catch (error) {
-      console.log('erro ao buscar livros', error)
+    } catch (err: unknown) {
+      error.value = err instanceof Error ? err.message : 'erro desconhecido ao buscar livros'
+    } finally {
+      loading.value = false
     }
   }
 
@@ -32,9 +38,9 @@ export const useBookStore = defineStore('books', () => {
     }
   }
   const loadStorageFavorites = () => {
-    const getStorageFavorites = localStorage.parse('favorites')
-    if (getStorageFavorites) {
-      favorites.value = getStorageFavorites
+    const storedFavorites = localStorage.getItem('favorites')
+    if (storedFavorites) {
+      favorites.value = JSON.parse(storedFavorites)
     }
   }
 
@@ -44,6 +50,8 @@ export const useBookStore = defineStore('books', () => {
 
   watch(favorites, saveStorageFavorites, { deep: true })
 
+  loadStorageFavorites()
+
   return {
     booksList,
     search,
@@ -52,5 +60,7 @@ export const useBookStore = defineStore('books', () => {
     saveStorageFavorites,
     loadStorageFavorites,
     favoriteBooks,
+    loading,
+    error,
   }
 })

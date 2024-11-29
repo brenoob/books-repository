@@ -17,12 +17,14 @@ const toggleMenu = () => {
         alt="logo"
         class="logo w-8 h-8 rounded-full"
         src="@/assets/logo.webp"
-        width="125"
-        height="125"
+        width="34"
+        height="34"
+        @click="$router.push({ name: 'home' })"
       />
       <div v-if="isMenuOpen" class="">
         <nav class="toggle-menu">
           <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/favorites">Favorites</RouterLink>
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
